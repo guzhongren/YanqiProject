@@ -13,6 +13,7 @@ const Index = () => (
       <Switch>
         <Route exact path="/" component={MainCom} ></Route>
         <Route path="/test" component={Test} ></Route>
+        <Route component={NoMatch}></Route>
       </Switch>
     </div>
   </Router>
@@ -25,7 +26,9 @@ const Test = ({match}) => {
   )
 };
 const NoMatch = ({ match }) => {
-  <h1>请选择正确的路由。。。</h1>
+  return(
+    <h1>请选择正确的路由。。。</h1>
+  )
 };
 const MapContentHeight = { height: "calc(100% - 56px)" };
 
