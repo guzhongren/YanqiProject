@@ -2,6 +2,14 @@
 # yarn lockfile v1
 
 
+"@types/arcgis-js-api@^4.5.1":
+  version "4.5.1"
+  resolved "https://registry.yarnpkg.com/@types/arcgis-js-api/-/arcgis-js-api-4.5.1.tgz#d05203216147b3e4268858bb666eb619ef9f734a"
+
+"@types/chai@^4.0.4":
+  version "4.0.4"
+  resolved "https://registry.yarnpkg.com/@types/chai/-/chai-4.0.4.tgz#fe86315d9a66827feeb16f73bc954688ec950e18"
+
 "@types/node@*":
   version "8.0.47"
   resolved "https://registry.yarnpkg.com/@types/node/-/node-8.0.47.tgz#968e596f91acd59069054558a00708c445ca30c2"
@@ -1116,6 +1124,12 @@ doctrine@^2.0.0:
     esutils "^2.0.2"
     isarray "^1.0.0"
 
+dojo-typings@^1.11.9:
+  version "1.11.9"
+  resolved "https://registry.yarnpkg.com/dojo-typings/-/dojo-typings-1.11.9.tgz#e58188366bfd4fe9508ec4fdf1675bcca0daffb3"
+  dependencies:
+    "@types/chai" "^4.0.4"
+
 dom-helpers@^3.2.0, dom-helpers@^3.2.1:
   version "3.2.1"
   resolved "https://registry.yarnpkg.com/dom-helpers/-/dom-helpers-3.2.1.tgz#3203e07fed217bd1f424b019735582fc37b2825a"
@@ -1369,6 +1383,14 @@ esrecurse@^4.1.0:
   dependencies:
     estraverse "^4.1.0"
     object-assign "^4.0.1"
+
+esri-loader-react@^1.0.2:
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/esri-loader-react/-/esri-loader-react-1.0.2.tgz#5117556285b579f4b5125aa883ab4932fedd5fd0"
+
+esri-loader@^1.2.0:
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/esri-loader/-/esri-loader-1.2.0.tgz#95d8304a4ea80045a8de3b14e872a8c8ed369d56"
 
 estraverse@^4.0.0, estraverse@^4.1.0, estraverse@^4.1.1, estraverse@^4.2.0:
   version "4.2.0"
