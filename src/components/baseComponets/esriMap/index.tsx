@@ -58,8 +58,7 @@ export default class EsriMapExt extends React.Component<any, any> {
 
     render() {
         const options = {
-            url: '/arcgis_js_api/library/4.5/'
-        
+            url: '/arcgis_js_api/library/4.5/init.js' // 
         };
 
         return (
