@@ -1,25 +1,29 @@
 /// <reference path="./@types/index.d.ts" />
 /**
- * created at 2017-06-08
+ * created at 2017-10-31
  * ./index.tsx
  */
 import * as React from 'react'
 import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom'
 import Config from "./config";
-
+import Tst from './components/reactStrapTest'
 const Index = () => (
   <Router basename="/">
     <div style={{ height: "100%" }}>
       <Switch>
         <Route exact path="/" component={MainCom} ></Route>
-        {/* <Route path="/circle" component={MapboxDemoList} ></Route> */}
+        <Route path="/test" component={Test} ></Route>
       </Switch>
     </div>
   </Router>
 );
 
 
-
+const Test = ({match}) => {
+  return(
+    <Tst>></Tst>
+  )
+};
 const NoMatch = ({ match }) => {
   <h1>请选择正确的路由。。。</h1>
 };

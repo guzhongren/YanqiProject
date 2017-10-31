@@ -1,13 +1,19 @@
 const path = require("path");
 const webpack = require("webpack");
 var CommonsChunkPlugin = require('webpack/lib/optimize/CommonsChunkPlugin');
-
+const ExtractTextPlugin = require("extract-text-webpack-plugin");
+const extractCSS = new ExtractTextPlugin('css/globalCss.css');
+const extractLESS = new ExtractTextPlugin('css/globalLess.css');
 module.exports = {
     context: path.resolve(__dirname, 'src'),
     entry: {
         vendor: [
             "react",
-            "react-dom"
+            "react-dom",
+            'bootstrap',
+            'jquery',
+            'bootstrap/dist/css/bootstrap.min.css',
+            'font-awesome/less/font-awesome.less'
         ]
     },
     output: {
@@ -19,7 +25,14 @@ module.exports = {
         rules: [
             {
                 test: /\.css$/,
-                use: ['style-loader', 'css-loader'],
+                use: ["style-loader", "css-loader"],
+                use: extractCSS.extract({
+                    use: "css-loader"
+                })
+            },
+            {
+                test: /\.less$/i,
+                use: extractLESS.extract(['css-loader', 'less-loader'])
             },
             {
                 test: /\.(png|jpg|jpeg|gif|svg|eot|ttf|gif|woff|ico|cur)$/,
@@ -28,15 +41,18 @@ module.exports = {
             // fonts
             {
                 test: /\.woff(2)?(\?v=[0-9]\.[0-9]\.[0-9])?$/,
-                loader: "url-loader?limit=10000&name=dist/fa/[hash].[ext]&mimetype=application/font-woff"
+                loader: "url-loader?limit=10000&name=fa/[hash].[ext]&mimetype=application/font-woff"
             },
             {
                 test: /\.(ttf|eot|svg)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
-                loader: "file-loader?name=dist/fa/[hash].[ext]"
+                loader: "file-loader?name=fa/[hash].[ext]"
             }
         ]
     },
     plugins: [
+        //css和less输出
+        extractCSS,
+        extractLESS,
         new webpack.ProvidePlugin({
             $: 'jquery', jQuery: 'jquery'
         }),
