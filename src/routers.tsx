@@ -27,15 +27,15 @@ const Test = ({match}) => {
 };
 const NoMatch = ({ match }) => {
   return(
-    <h1>4000000000000000000000.............4...........<br/>请选择正确的路由。。。</h1>
+    <p>4000000000000000000000.............4...........<br/>请选择正确的路由。。。</p>
   )
 };
-const MapContentHeight = { height: "calc(100% - 56px)" };
+const MapContentHeight = { height: "100%" };
 
 const MainCom = ({ match }) => {
   return (
     <div style={MapContentHeight}>
-     <h1>Gogogogoggo</h1>
+     <p>Gogogogoggo</p>
     </div>
   )
 }

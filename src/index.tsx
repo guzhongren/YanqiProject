@@ -8,7 +8,6 @@ import * as React from "react";
 import * as ReactDOM from "react-dom";
 import APP from "./routers";
 
-// import { Home1 } from "./components/home";
 ReactDOM.render(
     <APP />,
     document.getElementById("app")
