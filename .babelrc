@@ -1,7 +1,7 @@
 {
     "presets": [
       [
-        "es2015",
+        "es6",
         {
           "modules": false
         }
@@ -12,6 +12,7 @@
     ],
     "plugins": [
       [
+        "transform-object-assign",
         "import",
         {
           // "libraryName": "antd",

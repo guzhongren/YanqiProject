@@ -28,7 +28,7 @@ const Test = ({ match }) => {
     <div style={{height: "100%"}}>
       <EsriMapExt onMapViewCreated={(mapView) => { console.log(mapView) }}>
       </EsriMapExt>
-      <EchartsTest style={{ display: "float", "z-index": 99 }} />
+      <EchartsTest style={{top: "10px", position:"absolute", height: "200px"}} />
     </div>
   )
 };

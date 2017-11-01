@@ -1,10 +1,19 @@
 import * as React from 'react';
+import PropTypes from 'prop-types';
 import ReactEcharts from 'echarts-for-react';
 // require('echarts-liquidfill');
-
-export default class EchartsTest extends React.Component<any, any>{
-    constructor() {
-        super();
+export interface Props{
+    style?: React.CSSProperties
+}
+interface States{
+    style?: React.CSSProperties
+}
+export default class EchartsTest extends React.Component<Props, States>{
+    constructor(props:Props, states:States) {
+        super(props, states);
+        this.state={
+            style: Object.assign(this.props.style, {height: '350px', width: '100%'})
+        }
     };
     getOtion = () => {
         var labelTop = {
@@ -218,7 +227,7 @@ export default class EchartsTest extends React.Component<any, any>{
         return (
             <ReactEcharts
                 option={this.getOtion()}
-                style={{ height: '350px', width: '100%' }}
+                style={this.state.style}
                 modules={['echarts/lib/chart/bar', 'echarts/lib/component/tooltip', 'echarts/lib/component/title']}
                 className='react_for_echarts' />
         )
