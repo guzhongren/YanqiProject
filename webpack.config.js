@@ -1,20 +1,21 @@
-const webpack = require("webpack");
-const path = require("path");
+const path = require('path');
+const webpack = require('webpack');
+var isProduction = process.argv.indexOf('production') > 0;
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
 const extractCSS = new ExtractTextPlugin('css/css.css');
 const extractLESS = new ExtractTextPlugin('css/less.css');
-var isDev = process.argv.indexOf('development') > 0;
 module.exports = {
-    context: path.resolve(__dirname, "src"),
+    context: path.resolve(__dirname, 'src'),
     entry: [
         path.resolve(__dirname, "./src/index.tsx")
     ],
     output: {
-        filename: 'js/bundle.js',
-        path: path.resolve(__dirname + './public/dist/'),
-        publicPath: "/dist/"
+        filename: "js/bundle.js",
+        path: path.resolve(__dirname + "/public/dist/"),
+        publicPath: '/dist/'
     },
-    devtool: isDev ? "cheap-module-eval-source-map" : false,
+    // Enable sourcemaps for debugging webpack's output.
+    devtool: isProduction ? false : "cheap-module-eval-source-map",
     devServer: {
         contentBase: path.resolve(__dirname, "./public"),
         port: 8000,
@@ -45,20 +46,9 @@ module.exports = {
         }
     },
     resolve: {
+        // Add '.ts' and '.tsx' as resolvable extensions.
         extensions: ["config.js", ".ts", ".tsx", ".js", ".json"]
     },
-    // When importing a module whose path matches one of the following, just
-    // assume a corresponding global variable exists and use that instead.
-    // This is important because it allows us to avoid bundling all of our
-    // dependencies, which allows browsers to cache those libraries between builds.
-    externals: [{},
-        // function (context, request, callback) {
-        //     if (/^(esri|dojo|dijit)\//.test(request)) {
-        //         return callback(null, "dojo.require('" + request + "')");
-        //     }
-        //     callback();
-        // }
-    ],
     module: {
         rules: [
             // All files with a '.ts' or '.tsx' extension will be handled by 'awesome-typescript-loader'.
@@ -99,6 +89,12 @@ module.exports = {
             }
         ]
     },
+    // When importing a module whose path matches one of the following, just
+    // assume a corresponding global variable exists and use that instead.
+    // This is important because it allows us to avoid bundling all of our
+    // dependencies, which allows browsers to cache those libraries between builds.
+    externals: [{},
+     ],
     plugins: [
         new webpack.ProvidePlugin({
             $: 'jquery',
@@ -111,12 +107,14 @@ module.exports = {
         //css和less输出
         extractCSS,
         extractLESS,
-    ].concat(isDev ? [
+
+    ].concat(!isProduction ? [
         new webpack.HotModuleReplacementPlugin(),
         // // 开启全局的模块热替换(HMR)
-        new webpack.NamedModulesPlugin(),
+        new webpack.NamedModulesPlugin()
     ] : [
-        // 当模块热替换(HMR)时在浏览器控制台输出对用户更友好的模块名字信息
+        new webpack.optimize.OccurrenceOrderPlugin(),
+        // 生产环境用
         new webpack.optimize.UglifyJsPlugin({
             beautify: false,
             mangle: {
@@ -127,7 +125,7 @@ module.exports = {
                 warnings: false
             },
             comments: false
-        }),
-        new webpack.optimize.OccurrenceOrderPlugin()
+        })
     ]),
-}
+
+};
