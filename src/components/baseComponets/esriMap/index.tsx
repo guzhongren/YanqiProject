@@ -2,6 +2,7 @@ import * as React from 'react';
 import './style/index.less';
 import { dojoRequire } from 'esri-loader';
 import EsriLoader from 'esri-loader-react';
+// import * as ArcGIS from 'arcgis-js-api';
 export interface Props {
   onMapViewCreated?: (mapView) => void;
 }
