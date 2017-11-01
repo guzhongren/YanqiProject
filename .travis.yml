@@ -1,9 +1,8 @@
 language: node_js
 node_js:
 - 8.8.1
-before_script:
-  - npm run vendor
+
 script:
-  - npm run dev
+  - npm run vendor
 after_script:
 

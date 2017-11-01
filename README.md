@@ -1,5 +1,7 @@
 # 框架
-[![Build Status](https://travis-ci.org/guzhongren/YanqiProject.svg?branch=master)](https://travis-ci.org/guzhongren/YanqiProject)
+[![Build Status](https://travis-ci.org/guzhongren/YanqiProject.svg?branch=master)]
+
+[![Coverage Status](https://coveralls.io/repos/github/guzhongren/YanqiProject/badge.svg?branch=master)](https://coveralls.io/github/guzhongren/YanqiProject?branch=master)(https://travis-ci.org/guzhongren/YanqiProject)
 ![echats+arcgis](./gitImage/react-echarts.png)
 ## 获取代码
 ```
