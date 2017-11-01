@@ -23,14 +23,18 @@ const Index = () => (
   </Router>
 );
 
-const Test = ({match}) => {
-  return(
-    <EsriMapExt onMapViewCreated={(mapView) => {console.log(mapView)}}/>
+const Test = ({ match }) => {
+  return (
+    <div style={{height: "100%"}}>
+      <EsriMapExt onMapViewCreated={(mapView) => { console.log(mapView) }}>
+      </EsriMapExt>
+      <EchartsTest style={{ display: "float", "z-index": 99 }} />
+    </div>
   )
 };
 const NoMatch = ({ match }) => {
-  return(
-    <p>4000000000000000000000.............4...........<br/>请选择正确的路由。。。</p>
+  return (
+    <p>4000000000000000000000.............4...........<br />请选择正确的路由。。。</p>
   )
 };
 const MapContentHeight = { height: "100%" };
@@ -38,8 +42,8 @@ const MapContentHeight = { height: "100%" };
 const MainCom = ({ match }) => {
   return (
     <div style={MapContentHeight}>
-     <p>Gogogogoggo</p>
-     <EchartsTest />
+      <p>Gogogogoggo</p>
+
     </div>
   )
 }

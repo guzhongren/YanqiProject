@@ -1,4 +1,5 @@
-# 焉耆项目
+# 框架
+![echats+arcgis](./gitImage/react-echarts.png)
 ## 获取代码
 ```
 git clone https://github.com/guzhongren/YanqiProject.git
