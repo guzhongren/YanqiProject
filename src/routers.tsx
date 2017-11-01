@@ -24,7 +24,7 @@ const Index = () => (
 
 const Test = ({match}) => {
   return(
-    <EsriMapExt/>
+    <EsriMapExt onMapViewCreated={(mapView) => {console.log(mapView)}}/>
   )
 };
 const NoMatch = ({ match }) => {

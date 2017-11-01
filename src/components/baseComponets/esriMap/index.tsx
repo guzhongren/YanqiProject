@@ -2,11 +2,16 @@ import * as React from 'react';
 import './style/index.less';
 import { dojoRequire } from 'esri-loader';
 import EsriLoader from 'esri-loader-react';
+export interface Props {
+  onMapViewCreated?: (mapView) => void;
+}
+
 interface States {
   loaded?: boolean
 }
 export default class EsriMapExt extends React.Component<any, States> {
   mapContainer;
+  mapView;
   constructor() {
     super();
     this.state = {
@@ -20,10 +25,11 @@ export default class EsriMapExt extends React.Component<any, States> {
   }
   createMap = () => {
     dojoRequire(['esri/Map', 'esri/views/MapView'], (Map, MapView) => {
-      new MapView({
+      this.mapView = new MapView({
         container: this.mapContainer,
         map: new Map({ basemap: 'osm' })
-      })
+      });
+      this.props.onMapViewCreated(this.mapView);
     });
   }
   componentDidMount() {
@@ -36,9 +42,9 @@ export default class EsriMapExt extends React.Component<any, States> {
       url: '/arcgis_js_api/init.js'
     };
     return (
-      <div style={{height: '100%'}}>
+      <div style={{ height: '100%' }}>
         <EsriLoader options={options} ready={this.ready.bind(this)} />
-        <div style={{height: '100%'}} ref={node => this.mapContainer = node}></div>
+        <div style={{ height: '100%' }} ref={node => this.mapContainer = node}></div>
       </div>
     );
   }
