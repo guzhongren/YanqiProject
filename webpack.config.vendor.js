@@ -61,6 +61,11 @@ module.exports = {
             name: '[name]',
             path: path.join(__dirname, 'public', 'dist', "js", '[name]-manifest.json')
         }),
-        new webpack.optimize.UglifyJsPlugin()
+        new webpack.optimize.UglifyJsPlugin({
+            beautify: false,
+            mangle: { screw_ie8 : true },
+            compress: { screw_ie8: true, warnings: false },
+            comments: false
+        })
     ],
 }

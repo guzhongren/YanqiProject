@@ -4,7 +4,6 @@ var isProductionBuild = process.argv.indexOf('production') > 0;
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
 const extractCSS = new ExtractTextPlugin('css/css.css');
 const extractLESS = new ExtractTextPlugin('css/less.css');
-console.log(isProductionBuild);
 module.exports = {
     context: path.resolve(__dirname, 'src'),
     entry: [
@@ -71,13 +70,14 @@ module.exports = {
         //css和less输出
         extractCSS,
         extractLESS,
+        new webpack.optimize.OccurrenceOrderPlugin(),
         // 生产环境用
-        // new webpack.optimize.UglifyJsPlugin({
-        //     beautify: false,
-        //     mangle: { screw_ie8 : true },
-        //     compress: { screw_ie8: true, warnings: false },
-        //     comments: false
-        // }),
+        new webpack.optimize.UglifyJsPlugin({
+            beautify: false,
+            mangle: { screw_ie8 : true },
+            compress: { screw_ie8: true, warnings: false },
+            comments: false
+        }),
     ],
 
 };
