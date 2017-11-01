@@ -14,7 +14,7 @@ module.exports = {
         path: path.resolve(__dirname + './public/dist/'),
         publicPath: "/dist/"
     },
-    devtool: isDevBuild ? "cheap-module-eval-source-map" : null,
+    devtool: isDevBuild ? "cheap-module-eval-source-map" : false,
     devServer: {
         contentBase: path.resolve(__dirname, "./public"),
         port: 8000,
@@ -114,7 +114,7 @@ module.exports = {
         // // 开启全局的模块热替换(HMR)
         new webpack.NamedModulesPlugin(),
         // 当模块热替换(HMR)时在浏览器控制台输出对用户更友好的模块名字信息
-        new webpack.optimize.UglifyJsPlugin(),
-        new webpack.optimize.OccurrenceOrderPlugin()
+        // new webpack.optimize.UglifyJsPlugin(),
+        // new webpack.optimize.OccurrenceOrderPlugin()
     ],
 }

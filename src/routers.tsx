@@ -4,24 +4,22 @@
  * ./index.tsx
  */
 import * as React from 'react'
-import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom'
+import { HashRouter as Router, Route, Link, Switch } from 'react-router-dom'
 import Config from "./config";
 import Tst from './components/reactStrapTest';
 import EsriMapExt from "./components/baseComponets/esriMap";
 // import Map1 from "./components/baseComponets/esriMap/index1";
 const Index = () => (
   <Router basename="/">
-    <div style={{ height: "100%" }}>
+    {/* <div style={{ height: "100%" }}> */}
       <Switch>
-        <Route exact path="/" component={MainCom} ></Route>
-        <Route path="/test" component={Test} ></Route>
+        <Route exact path="/" component={Test} ></Route>
+        <Route path="/test" component={MainCom} ></Route>
         <Route component={NoMatch}></Route>
       </Switch>
-    </div>
+    {/* </div> */}
   </Router>
 );
-
-
 const Test = ({match}) => {
   return(
     <EsriMapExt onMapViewCreated={(mapView) => {console.log(mapView)}}/>
