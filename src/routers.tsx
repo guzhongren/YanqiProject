@@ -11,15 +11,17 @@ import EsriMapExt from "./components/baseComponets/esriMap";
 // import Map1 from "./components/baseComponets/esriMap/index1";
 const Index = () => (
   <Router basename="/">
-    {/* <div style={{ height: "100%" }}> */}
+    <div style={{ height: "100%" }}>
+      {/* 预留菜单栏 */}
       <Switch>
         <Route exact path="/" component={Test} ></Route>
         <Route path="/test" component={MainCom} ></Route>
         <Route component={NoMatch}></Route>
       </Switch>
-    {/* </div> */}
+    </div>
   </Router>
 );
+
 const Test = ({match}) => {
   return(
     <EsriMapExt onMapViewCreated={(mapView) => {console.log(mapView)}}/>
