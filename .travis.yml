@@ -5,3 +5,5 @@ before_script:
   - npm run vendor
 script:
   - npm run dev
+after_script:
+

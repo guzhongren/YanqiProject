@@ -1,5 +1,5 @@
 # 框架
-![Build](https://travis-ci.org/guzhongren/YanqiProject.svg?branch=master)
+[![Build Status](https://travis-ci.org/guzhongren/YanqiProject.svg?branch=master)](https://travis-ci.org/guzhongren/YanqiProject)
 ![echats+arcgis](./gitImage/react-echarts.png)
 ## 获取代码
 ```
