@@ -22,7 +22,7 @@ export default class EsriMapExt extends React.Component<any, States> {
     dojoRequire(['esri/Map', 'esri/views/MapView'], (Map, MapView) => {
       new MapView({
         container: this.mapContainer,
-        map: new Map({ basemap: 'oceans' })
+        map: new Map({ basemap: 'osm' })
       })
     });
   }
@@ -33,7 +33,7 @@ export default class EsriMapExt extends React.Component<any, States> {
     // you can omit options and it defaults to the latest version
     const options = {
       // url: 'https://js.arcgis.com/4.4/'
-      url: 'http://localhost/arcgis_js_api/library/4.5/init.js'
+      url: '/arcgis_js_api/init.js'
     };
     return (
       <div style={{height: '100%'}}>
