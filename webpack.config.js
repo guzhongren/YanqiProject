@@ -33,16 +33,16 @@ module.exports = {
             warnings: true,
             errors: true
         },
-        // proxy: {
-        //     '/ags': {
-        //         target: 'https://localhost/arcgis_js_api',
-        //         changeOrigin: true,
-        //         secure: false,
-        //         pathRewrite: {
-        //             '^/ags': ''
-        //         }
-        //     }
-        // }
+        proxy: {
+            '/ags': {
+                target: 'https://localhost',
+                changeOrigin: true,
+                secure: false,
+                pathRewrite: {
+                    '^/ags': ''
+                }
+            }
+        }
     },
     resolve: {
         extensions: [".less", ".css", ".ts", ".tsx", ".js", ".json"]

@@ -2,18 +2,18 @@ import * as React from 'react';
 import './style/index.less';
 import { dojoRequire } from 'esri-loader';
 import EsriLoader from 'esri-loader-react';
-interface States{
+interface States {
   loaded?: boolean
 }
 export default class EsriMapExt extends React.Component<any, States> {
   mapContainer;
-  constructor(){
+  constructor() {
     super();
-    this.state= {
+    this.state = {
       loaded: false
     }
   }
-  ready(){
+  ready() {
     this.setState({
       loaded: true
     });
@@ -26,18 +26,19 @@ export default class EsriMapExt extends React.Component<any, States> {
       })
     });
   }
-  componentDidMount(){
+  componentDidMount() {
     this.createMap();
   };
   render() {
     // you can omit options and it defaults to the latest version
     const options = {
-      url: 'https://js.arcgis.com/4.4/'
+      // url: 'https://js.arcgis.com/4.4/'
+      url: 'http://localhost/arcgis_js_api/library/4.5/init.js'
     };
     return (
-      <div>
-        <EsriLoader options={options} ready={this.ready.bind(this)} /> 
-        <div ref={node => this.mapContainer = node}></div>
+      <div style={{height: '100%'}}>
+        <EsriLoader options={options} ready={this.ready.bind(this)} />
+        <div style={{height: '100%'}} ref={node => this.mapContainer = node}></div>
       </div>
     );
   }
