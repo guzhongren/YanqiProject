@@ -4,7 +4,7 @@
  * ./index.tsx
  */
 import * as React from 'react'
-import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom'
+import { HashRouter as Router, Route, Link, Switch } from 'react-router-dom'
 import Config from "./config";
 import Tst from './components/reactStrapTest';
 import EsriMapExt from "./components/baseComponets/esriMap";
