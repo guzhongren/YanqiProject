@@ -1,4 +1,4 @@
-public/dist/*
+#public/dist/*
 public/arcgis_js_api/*
 # Logs
 logs
