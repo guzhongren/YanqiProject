@@ -16,6 +16,11 @@ yarn run vendor
 ```
 yarn run dev
 ```
+4. 生产环境
+```
+yarn run build
+```
+运行完成之后将public下的文件目录copy至Web容器下即可。
 ### ***命令之后要将dist/fa目录移动至dist/css/下, 此bug稍后再改***
 
 ## 配置ags api
@@ -32,4 +37,19 @@ yarn run dev
 结果显示如下
 
 ![api 配置结果](./gitImage/AGS_API_config.png)
+
+## esri-loader bug
+修改node_modules/esri-loader/src/esri-loader.d.ts中关于dojoRequire callback的参数,最终结果如下
+```
+export declare function isLoaded(): Element;
+export declare function bootstrap(callback?: (error: Error, dojoRequire?: any) => void, options?: any): void;
+export declare function dojoRequire(modules: string[], callback: Function): void;
+declare var _default: {
+    isLoaded: () => Element;
+    bootstrap: (callback?: (error: Error, dojoRequire?: any) => void, options?: any) => void;
+    dojoRequire: (modules: string[], callback: Function) => void;
+};
+export default _default;
+
+```
 

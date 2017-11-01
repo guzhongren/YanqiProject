@@ -16,6 +16,8 @@
     "@types/react-dom": "^16.0.2",
     "bootstrap": "^3.3.7",
     "dojo-typings": "^1.11.9",
+    "echarts": "^3.7.2",
+    "echarts-for-react": "^2.0.0",
     "es5-shim": "^4.5.9",
     "es6-shim": "^0.35.3",
     "esri-loader": "^1.2.0",
