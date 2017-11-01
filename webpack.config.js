@@ -32,7 +32,17 @@ module.exports = {
         overlay: {
             warnings: true,
             errors: true
-        }
+        },
+        // proxy: {
+        //     '/ags': {
+        //         target: 'https://localhost/arcgis_js_api',
+        //         changeOrigin: true,
+        //         secure: false,
+        //         pathRewrite: {
+        //             '^/ags': ''
+        //         }
+        //     }
+        // }
     },
     resolve: {
         extensions: [".less", ".css", ".ts", ".tsx", ".js", ".json"]
@@ -41,7 +51,14 @@ module.exports = {
     // assume a corresponding global variable exists and use that instead.
     // This is important because it allows us to avoid bundling all of our
     // dependencies, which allows browsers to cache those libraries between builds.
-    externals: [{}, ],
+    externals: [{},
+        // function (context, request, callback) {
+        //     if (/^(esri|dojo|dijit)\//.test(request)) {
+        //         return callback(null, "dojo.require('" + request + "')");
+        //     }
+        //     callback();
+        // }
+    ],
     module: {
         rules: [
             // All files with a '.ts' or '.tsx' extension will be handled by 'awesome-typescript-loader'.

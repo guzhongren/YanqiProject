@@ -8,7 +8,7 @@ import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom'
 import Config from "./config";
 import Tst from './components/reactStrapTest';
 import EsriMapExt from "./components/baseComponets/esriMap";
-import Map1 from "./components/baseComponets/esriMap/index1";
+// import Map1 from "./components/baseComponets/esriMap/index1";
 const Index = () => (
   <Router basename="/">
     <div style={{ height: "100%" }}>
@@ -24,7 +24,7 @@ const Index = () => (
 
 const Test = ({match}) => {
   return(
-    <Map1/>
+    <EsriMapExt/>
   )
 };
 const NoMatch = ({ match }) => {
