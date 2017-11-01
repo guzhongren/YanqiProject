@@ -3,7 +3,7 @@ const path = require("path");
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
 const extractCSS = new ExtractTextPlugin('css/css.css');
 const extractLESS = new ExtractTextPlugin('css/less.css');
-var isDevBuild = process.argv.indexOf('development') > 0;
+var isDev = process.argv.indexOf('development') > 0;
 module.exports = {
     context: path.resolve(__dirname, "src"),
     entry: [
@@ -14,7 +14,7 @@ module.exports = {
         path: path.resolve(__dirname + './public/dist/'),
         publicPath: "/dist/"
     },
-    devtool: isDevBuild ? "cheap-module-eval-source-map" : false,
+    devtool: isDev ? "cheap-module-eval-source-map" : false,
     devServer: {
         contentBase: path.resolve(__dirname, "./public"),
         port: 8000,
@@ -45,7 +45,7 @@ module.exports = {
         }
     },
     resolve: {
-        extensions: [".less", ".css", ".ts", ".tsx", ".js", ".json"]
+        extensions: ["config.js", ".ts", ".tsx", ".js", ".json"]
     },
     // When importing a module whose path matches one of the following, just
     // assume a corresponding global variable exists and use that instead.
@@ -64,8 +64,9 @@ module.exports = {
             // All files with a '.ts' or '.tsx' extension will be handled by 'awesome-typescript-loader'.
             {
                 test: /\.tsx?$/,
-                loader: "awesome-typescript-loader",
+                loader: "awesome-typescript-loader"
             },
+
             // All output '.js' files will have any sourcemaps re-processed by 'source-map-loader'.
             {
                 enforce: "pre",
@@ -110,11 +111,23 @@ module.exports = {
         //css和less输出
         extractCSS,
         extractLESS,
+    ].concat(isDev ? [
         new webpack.HotModuleReplacementPlugin(),
         // // 开启全局的模块热替换(HMR)
         new webpack.NamedModulesPlugin(),
+    ] : [
         // 当模块热替换(HMR)时在浏览器控制台输出对用户更友好的模块名字信息
-        // new webpack.optimize.UglifyJsPlugin(),
-        // new webpack.optimize.OccurrenceOrderPlugin()
-    ],
+        new webpack.optimize.UglifyJsPlugin({
+            beautify: false,
+            mangle: {
+                screw_ie8: true
+            },
+            compress: {
+                screw_ie8: true,
+                warnings: false
+            },
+            comments: false
+        }),
+        new webpack.optimize.OccurrenceOrderPlugin()
+    ]),
 }

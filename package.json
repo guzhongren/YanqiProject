@@ -5,7 +5,7 @@
   "main": "./src/index.tsx",
   "scripts": {
     "vendor": "webpack --config webpack.config.vendor.js",
-    "build": "webpack --config webpack.build.config.js --env production",
+    "build": "webpack --config webpack.config.js --env production",
     "dev": "webpack-dev-server --open --config webpack.config.js  --env development"
   },
   "author": "guzhongren",
