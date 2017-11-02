@@ -28,7 +28,7 @@ export default class EsriMapExt extends React.Component<any, States> {
     dojoRequire(['esri/Map', 'esri/views/MapView'], (Map, MapView) => {
       this.mapView = new MapView({
         container: this.mapContainer,
-        map: new Map({ basemap: 'osm' })
+        map: new Map({ basemap: 'dark-gray' })
       });
       this.props.onMapViewCreated(this.mapView);
     });
