@@ -6,7 +6,9 @@
   "scripts": {
     "vendor": "webpack --config webpack.config.vendor.js",
     "build": "webpack --config webpack.config.js --env production",
-    "dev": "webpack-dev-server --open --config webpack.config.js  --env development"
+    "dev": "webpack-dev-server --open --config webpack.config.js  --env development",
+    "test": "node ./node_modules/babel-istanbul/lib/cli cover --dir ./coverage ./node_modules/mocha/bin/_mocha --colors ./test/add.test.js -r jsdom-global/register",
+    "coverage": "cat ./coverage/lcov.info | coveralls"
   },
   "author": "guzhongren",
   "license": "MIT",
