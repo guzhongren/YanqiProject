@@ -113,6 +113,7 @@ module.exports = {
         // // 开启全局的模块热替换(HMR)
         new webpack.NamedModulesPlugin()
     ] : [
+        new webpack.optimize.ModuleConcatenationPlugin(),
         new webpack.optimize.OccurrenceOrderPlugin(),
         // 生产环境用
         new webpack.optimize.UglifyJsPlugin({
