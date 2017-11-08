@@ -4,6 +4,9 @@ var isProduction = process.argv.indexOf('production') > 0;
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
 const extractCSS = new ExtractTextPlugin('css/css.css');
 const extractLESS = new ExtractTextPlugin('css/less.css');
+const Dashboard = require("webpack-dashboard");
+const DashboardPlugin = require("webpack-dashboard/plugin");
+var dashboard = new Dashboard();
 module.exports = {
     context: path.resolve(__dirname, 'src'),
     entry: [
@@ -18,7 +21,7 @@ module.exports = {
     devtool: isProduction ? false : "cheap-module-eval-source-map",
     devServer: {
         contentBase: path.resolve(__dirname, "./public"),
-        port: 8000,
+        port: 8080,
         host: 'localhost',
         hot: true,
         // 以下信息可有可无，为了完整
@@ -109,6 +112,7 @@ module.exports = {
         extractLESS,
 
     ].concat(!isProduction ? [
+		new DashboardPlugin(dashboard.setData),
         new webpack.HotModuleReplacementPlugin(),
         // // 开启全局的模块热替换(HMR)
         new webpack.NamedModulesPlugin()
