@@ -8,14 +8,14 @@ const Dashboard = require("webpack-dashboard");
 const DashboardPlugin = require("webpack-dashboard/plugin");
 var dashboard = new Dashboard();
 module.exports = {
-    context: path.resolve(__dirname, 'src'),
+    context: path.resolve(__dirname, './src'),
     entry: [
         path.resolve(__dirname, "./src/index.tsx")
     ],
     output: {
         filename: "js/bundle.js",
-        path: path.resolve(__dirname + "/public/dist/"),
-        publicPath: '/dist/'
+        path: path.resolve(__dirname, "./public/dist/")
+       //  publicPath: '/dist/'
     },
     // Enable sourcemaps for debugging webpack's output.
     devtool: isProduction ? false : "cheap-module-eval-source-map",
