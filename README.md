@@ -7,6 +7,9 @@
 git clone https://github.com/guzhongren/YanqiProject.git
 ```
 ## 运行代码
+
+> 需全局安装webpack及webpack-dev-server
+
 1. 安装依赖
 ```
 yarn install
@@ -41,7 +44,7 @@ yarn run build
 
 ![api 配置结果](./gitImage/AGS_API_config.png)
 
-## esri-loader bug
+## esri-loader bug [已修复]
 修改node_modules/esri-loader/src/esri-loader.d.ts中关于dojoRequire callback的参数,最终结果如下
 ```
 export declare function isLoaded(): Element;
