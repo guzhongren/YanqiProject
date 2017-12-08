@@ -4,17 +4,18 @@ import { dojoRequire } from 'esri-loader';
 import EsriLoader from 'esri-loader-react';
 // import * as ArcGIS from 'arcgis-js-api';
 export interface Props {
-  onMapViewCreated?: (mapView) => void;
+  viewParams?: {};
+  onViewCreated?: (view) => void;
 }
 
-interface States {
+interface State {
   loaded?: boolean
 }
-export default class EsriMapExt extends React.Component<any, States> {
-  mapContainer;
-  mapView;
-  constructor() {
-    super();
+export default class EsriMapExt extends React.Component<Props, State> {
+  container;
+  view;
+  constructor(props:Props) {
+    super(props);
     this.state = {
       loaded: false
     }
@@ -25,12 +26,15 @@ export default class EsriMapExt extends React.Component<any, States> {
     });
   }
   createMap = () => {
-    dojoRequire(['esri/Map', 'esri/views/MapView'], (Map, MapView) => {
-      this.mapView = new MapView({
-        container: this.mapContainer,
-        map: new Map({ basemap: 'dark-gray' })
+    let _self =  this;
+    dojoRequire(['esri/Map', 'esri/views/SceneView'], (Map, SceneView) => {
+      _self.view = new SceneView(Object.assign({
+        container: _self.container,
+        map: new Map({ basemap: 'streets-night-vector' })
+      }, _self.props.viewParams));
+      _self.view.then(()=>{
+        _self.props.onViewCreated(_self.view);
       });
-      this.props.onMapViewCreated(this.mapView);
     });
   }
   componentDidMount() {
@@ -42,10 +46,11 @@ export default class EsriMapExt extends React.Component<any, States> {
       // url: 'https://js.arcgis.com/4.4/'
       url: '/arcgis_js_api/init.js'
     };
+    const style= {height: '100%'}
     return (
-      <div style={{ height: '100%' }}>
+      <div style={style}>
         <EsriLoader options={options} ready={this.ready.bind(this)} />
-        <div style={{ height: '100%' }} ref={node => this.mapContainer = node}></div>
+        <div style={style} ref={node => this.container = node}></div>
       </div>
     );
   }

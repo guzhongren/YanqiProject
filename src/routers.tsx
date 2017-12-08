@@ -7,7 +7,7 @@ import * as React from 'react'
 import { HashRouter as Router, Route, Link, Switch } from 'react-router-dom'
 import Config from "./config";
 import Tst from './components/reactStrapTest';
-import EsriMapExt from "./components/baseComponets/esriMap";
+import BigScreen from "./components/bigScreen";
 import EchartsTest from './components/reactStrapTest/echartsTest'
 // import Map1 from "./components/baseComponets/esriMap/index1";
 const Index = () => (
@@ -26,9 +26,7 @@ const Index = () => (
 const Test = ({ match }) => {
   return (
     <div style={{height: "100%"}}>
-      <EsriMapExt onMapViewCreated={(mapView) => { console.log(mapView) }}>
-      </EsriMapExt>
-      <EchartsTest style={{top: "10px", position:"absolute", height: "200px"}} />
+      <BigScreen></BigScreen> 
     </div>
   )
 };
