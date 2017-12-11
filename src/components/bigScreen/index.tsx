@@ -1,7 +1,6 @@
 import * as React from 'react';
 import EsriMapExt from '../baseComponets/esriMap';
 import EchartsTest from '../reactStrapTest/echartsTest';
-// import {_esri} from 'arcgis-js-api'
 export interface Props {
 
 }
