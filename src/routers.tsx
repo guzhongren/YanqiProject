@@ -8,22 +8,22 @@ import { HashRouter as Router, Route, Link, Switch } from 'react-router-dom'
 import Config from "./config";
 import Tst from './components/reactStrapTest';
 import BigScreen from "./components/bigScreen";
-import EchartsTest from './components/reactStrapTest/echartsTest'
+// import CesiumExt from './components/baseComponets/cesium';
 // import Map1 from "./components/baseComponets/esriMap/index1";
 const Index = () => (
   <Router basename="/">
     <div style={{ height: "100%" }}>
       {/* 预留菜单栏 */}
       <Switch>
-        <Route exact path="/" component={Test} ></Route>
-        <Route path="/test" component={MainCom} ></Route>
+        <Route exact path="/" component={Esri} ></Route>
+        <Route path="/cesium" component={Cesium} ></Route>
         <Route component={NoMatch}></Route>
       </Switch>
     </div>
   </Router>
 );
 
-const Test = ({ match }) => {
+const Esri = ({ match }) => {
   return (
     <div style={{height: "100%"}}>
       <BigScreen></BigScreen> 
@@ -37,11 +37,11 @@ const NoMatch = ({ match }) => {
 };
 const MapContentHeight = { height: "100%" };
 
-const MainCom = ({ match }) => {
+const Cesium = ({ match }) => {
   return (
     <div style={MapContentHeight}>
       <p>Gogogogoggo</p>
-
+    {/* <CesiumExt onViewCreated={(viewer=>{console.log('cesium ', viewer)})}></CesiumExt> */}
     </div>
   )
 }

@@ -6,7 +6,13 @@ const extractCSS = new ExtractTextPlugin('css/css.css');
 const extractLESS = new ExtractTextPlugin('css/less.css');
 const Dashboard = require("webpack-dashboard");
 const DashboardPlugin = require("webpack-dashboard/plugin");
+const CopywebpackPlugin = require('copy-webpack-plugin');
 var dashboard = new Dashboard();
+//##########################################
+const cesiumSource = '../node_modules/cesium/Source';
+const cesiumWorkers = '../Build/Cesium/Workers';
+//##########################################
+
 module.exports = {
     context: path.resolve(__dirname, './src'),
     entry: [
@@ -50,8 +56,22 @@ module.exports = {
     },
     resolve: {
         // Add '.ts' and '.tsx' as resolvable extensions.
-        extensions: ["config.js", ".ts", ".tsx", ".js", ".json"]
+        extensions: ["config.js", ".ts", ".tsx", ".js", ".json"],
+        alias: {
+            //##########################################
+            // 给cesium起别名
+            cesium: path.resolve(__dirname, cesiumSource)
+            //##########################################
+        },
     },
+    //##########################################
+    amd: {
+        toUrlUndefined: true
+    },
+    node: {
+        fs: 'empty'
+    },
+    //##########################################
     module: {
         rules: [
             // All files with a '.ts' or '.tsx' extension will be handled by 'awesome-typescript-loader'.
@@ -96,8 +116,7 @@ module.exports = {
     // assume a corresponding global variable exists and use that instead.
     // This is important because it allows us to avoid bundling all of our
     // dependencies, which allows browsers to cache those libraries between builds.
-    externals: [{},
-     ],
+    externals: [{}, ],
     plugins: [
         new webpack.ProvidePlugin({
             $: 'jquery',
@@ -112,10 +131,32 @@ module.exports = {
         extractLESS,
 
     ].concat(!isProduction ? [
-		new DashboardPlugin(dashboard.setData),
+        new DashboardPlugin(dashboard.setData),
         new webpack.HotModuleReplacementPlugin(),
         // // 开启全局的模块热替换(HMR)
-        new webpack.NamedModulesPlugin()
+        new webpack.NamedModulesPlugin(),
+        //##########################################
+
+        new CopywebpackPlugin([{
+            from: path.join(cesiumSource, cesiumWorkers),
+            to: 'Workers'
+        }]),
+        new CopywebpackPlugin([{
+            from: path.join(cesiumSource, 'ThirdParty'),
+            to: 'Workers'
+        }]),
+        new CopywebpackPlugin([{
+            from: path.join(cesiumSource, 'Assets'),
+            to: 'Assets'
+        }]),
+        new CopywebpackPlugin([{
+            from: path.join(cesiumSource, 'Widgets'),
+            to: 'Widgets'
+        }]),
+        new webpack.DefinePlugin({
+            CESIUM_BASE_URL: JSON.stringify('')
+        })
+        //##########################################
     ] : [
         new webpack.optimize.ModuleConcatenationPlugin(),
         new webpack.optimize.OccurrenceOrderPlugin(),
