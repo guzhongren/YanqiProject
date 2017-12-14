@@ -22,7 +22,8 @@ module.exports = {
     output: {
         filename: "js/bundle.js",
         path: path.resolve(__dirname, "./public/dist/"),
-        publicPath: '/dist/'
+        publicPath: '/dist/',
+        sourcePrefix: ''
     },
     // Enable sourcemaps for debugging webpack's output.
     devtool: isProduction ? false : "cheap-module-eval-source-map",
@@ -67,9 +68,11 @@ module.exports = {
     },
     //##########################################
     amd: {
+        // 让webpack更好的在cesium中使用require
         toUrlUndefined: true
     },
     node: {
+        //使用fs解析node modules
         fs: 'empty'
     },
     //##########################################
@@ -125,6 +128,10 @@ module.exports = {
         new webpack.ProvidePlugin({
             $: 'jquery',
             jQuery: 'jquery'
+        }),
+        new webpack.DefinePlugin({
+            // Define relative base path in cesium for loading assets
+            CESIUM_BASE_URL: JSON.stringify('')
         }),
         new webpack.DllReferencePlugin({
             context: __dirname,
