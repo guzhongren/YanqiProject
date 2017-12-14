@@ -61,8 +61,7 @@ module.exports = {
         extensions: ["config.js", ".ts", ".tsx", ".js", ".json"],
         alias: {
             //##########################################
-            // 给cesium起别名
-            cesium: path.resolve(__dirname, cesiumSource)
+            cesium: path.resolve(__dirname,  cesiumSource)
             //##########################################
         },
     },
@@ -77,6 +76,8 @@ module.exports = {
     },
     //##########################################
     module: {
+        //解决Critical dependency: require function is used in a way in which dependencies cannot be statically extracted的问题
+        unknownContextCritical: false,
         rules: [
             // All files with a '.ts' or '.tsx' extension will be handled by 'awesome-typescript-loader'.
             {
@@ -89,8 +90,8 @@ module.exports = {
                 enforce: "pre",
                 test: /\.js$/,
                 use: "source-map-loader",
-                exclude:[
-                    path.resolve(path.join(__dirname,  'node_modules/cesium'))
+                exclude: [
+                    path.resolve(path.join(__dirname, 'node_modules/cesium'))
                 ]
             },
             {
@@ -148,19 +149,19 @@ module.exports = {
         new webpack.NamedModulesPlugin(),
         //##########################################
         new CopywebpackPlugin([{
-            from: path.join('../'+cesiumSource, cesiumWorkers),
+            from: path.join('../' + cesiumSource, cesiumWorkers),
             to: 'Workers'
         }]),
         new CopywebpackPlugin([{
-            from: path.join('../'+cesiumSource, 'ThirdParty'),
+            from: path.join('../' + cesiumSource, 'ThirdParty'),
             to: 'Workers'
         }]),
         new CopywebpackPlugin([{
-            from: path.join('../'+cesiumSource, 'Assets'),
+            from: path.join('../' + cesiumSource, 'Assets'),
             to: 'Assets'
         }]),
         new CopywebpackPlugin([{
-            from: path.join('../'+cesiumSource, 'Widgets'),
+            from: path.join('../' + cesiumSource, 'Widgets'),
             to: 'Widgets'
         }]),
         new webpack.DefinePlugin({

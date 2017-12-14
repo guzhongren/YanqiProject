@@ -1,30 +1,31 @@
-import React, { Component } from 'react';
+import * as  React from 'react';
 import 'cesium/Widgets/widgets.css';
 
 import Cesium from 'cesium/Cesium';
-// const Cesium = cesium.Cesium;
 
 export interface Props {
   onViewCreated?: (viewer) => void;
 }
-interface State{
+interface State {
 
 }
-class App extends Component<Props, State> {
-  constructor(props:Props){
+class App extends React.Component<Props, State> {
+  constructor(props: Props) {
     super(props);
     this.state = {}
-  }
+  };
   viewer;
   cesiumContainer;
   componentDidMount() {
 
     this.viewer = new Cesium.Viewer(this.cesiumContainer);
     this.props.onViewCreated(this.viewer);
-  }
+  };
+
   render() {
+    let _self = this;
     return (
-      <div id="cesiumContainer" ref={element => this.cesiumContainer = element} />
+        <div ref={element => { _self.cesiumContainer = element }} ></div>
     );
   }
 }

@@ -14,7 +14,7 @@ interface State {
 export default class EsriMapExt extends React.Component<Props, State> {
   container;
   view;
-  constructor(props:Props) {
+  constructor(props: Props) {
     super(props);
     this.state = {
       loaded: false
@@ -26,13 +26,13 @@ export default class EsriMapExt extends React.Component<Props, State> {
     });
   }
   createMap = () => {
-    let _self =  this;
+    let _self = this;
     dojoRequire(['esri/Map', 'esri/views/SceneView'], (Map, SceneView) => {
       _self.view = new SceneView(Object.assign({
         container: _self.container,
         map: new Map({ basemap: 'streets-night-vector' })
       }, _self.props.viewParams));
-      _self.view.then(()=>{
+      _self.view.then(() => {
         _self.props.onViewCreated(_self.view);
       });
     });
@@ -46,7 +46,7 @@ export default class EsriMapExt extends React.Component<Props, State> {
       // url: 'https://js.arcgis.com/4.4/'
       url: '/arcgis_js_api/init.js'
     };
-    const style= {height: '100%'}
+    const style = { height: '100%' }
     return (
       <div style={style}>
         <EsriLoader options={options} ready={this.ready.bind(this)} />
