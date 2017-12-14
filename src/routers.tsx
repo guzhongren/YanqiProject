@@ -8,7 +8,7 @@ import { HashRouter as Router, Route, Link, Switch } from 'react-router-dom'
 import Config from "./config";
 import Tst from './components/reactStrapTest';
 import BigScreen from "./components/bigScreen";
-// import CesiumExt from './components/baseComponets/cesium';
+import CesiumExt from './components/baseComponets/cesiumExt';
 // import Map1 from "./components/baseComponets/esriMap/index1";
 const Index = () => (
   <Router basename="/">
@@ -41,7 +41,7 @@ const Cesium = ({ match }) => {
   return (
     <div style={MapContentHeight}>
       <p>Gogogogoggo</p>
-    {/* <CesiumExt onViewCreated={(viewer=>{console.log('cesium ', viewer)})}></CesiumExt> */}
+    <CesiumExt onViewCreated={(viewer=>{console.log('cesium ', viewer)})}></CesiumExt>
     </div>
   )
 }

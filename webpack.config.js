@@ -4,12 +4,13 @@ var isProduction = process.argv.indexOf('production') > 0;
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
 const extractCSS = new ExtractTextPlugin('css/css.css');
 const extractLESS = new ExtractTextPlugin('css/less.css');
-const Dashboard = require("webpack-dashboard");
-const DashboardPlugin = require("webpack-dashboard/plugin");
+// const Dashboard = require("webpack-dashboard");
+// const DashboardPlugin = require("webpack-dashboard/plugin");
 const CopywebpackPlugin = require('copy-webpack-plugin');
-var dashboard = new Dashboard();
+// var dashboard = new Dashboard();
 //##########################################
-const cesiumSource = '../node_modules/cesium/Source';
+const cesiumSource = 'node_modules/cesium/Source';
+// node_modules下的目录
 const cesiumWorkers = '../Build/Cesium/Workers';
 //##########################################
 
@@ -77,14 +78,17 @@ module.exports = {
             // All files with a '.ts' or '.tsx' extension will be handled by 'awesome-typescript-loader'.
             {
                 test: /\.tsx?$/,
-                loader: "awesome-typescript-loader"
+                use: "awesome-typescript-loader"
             },
 
             // All output '.js' files will have any sourcemaps re-processed by 'source-map-loader'.
             {
                 enforce: "pre",
                 test: /\.js$/,
-                loader: "source-map-loader"
+                use: "source-map-loader",
+                exclude:[
+                    path.resolve(path.join(__dirname,  'node_modules/cesium'))
+                ]
             },
             {
                 test: /\.css$/,
@@ -99,16 +103,16 @@ module.exports = {
             },
             {
                 test: /\.(png|jpg|jpeg|gif|svg|eot|ttf|gif|woff|ico|cur)$/,
-                loader: 'url-loader?limit=1500&name=images/[hash:6].[ext]'
+                use: 'url-loader?limit=1500&name=images/[hash:6].[ext]'
             },
             // fonts
             {
                 test: /\.woff(2)?(\?v=[0-9]\.[0-9]\.[0-9])?$/,
-                loader: "url-loader?limit=10000&name=dist/fa/[hash].[ext]&mimetype=application/font-woff"
+                use: "url-loader?limit=10000&name=dist/fa/[hash].[ext]&mimetype=application/font-woff"
             },
             {
                 test: /\.(ttf|eot|svg)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
-                loader: "file-loader?name=dist/fa/[hash].[ext]"
+                use: "file-loader?name=dist/fa/[hash].[ext]"
             }
         ]
     },
@@ -131,26 +135,25 @@ module.exports = {
         extractLESS,
 
     ].concat(!isProduction ? [
-        new DashboardPlugin(dashboard.setData),
+        // new DashboardPlugin(dashboard.setData),
         new webpack.HotModuleReplacementPlugin(),
         // // 开启全局的模块热替换(HMR)
         new webpack.NamedModulesPlugin(),
         //##########################################
-
         new CopywebpackPlugin([{
-            from: path.join(cesiumSource, cesiumWorkers),
+            from: path.join('../'+cesiumSource, cesiumWorkers),
             to: 'Workers'
         }]),
         new CopywebpackPlugin([{
-            from: path.join(cesiumSource, 'ThirdParty'),
+            from: path.join('../'+cesiumSource, 'ThirdParty'),
             to: 'Workers'
         }]),
         new CopywebpackPlugin([{
-            from: path.join(cesiumSource, 'Assets'),
+            from: path.join('../'+cesiumSource, 'Assets'),
             to: 'Assets'
         }]),
         new CopywebpackPlugin([{
-            from: path.join(cesiumSource, 'Widgets'),
+            from: path.join('../'+cesiumSource, 'Widgets'),
             to: 'Widgets'
         }]),
         new webpack.DefinePlugin({

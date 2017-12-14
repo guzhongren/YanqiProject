@@ -1,4 +1,3 @@
-
 import 'console-polyfill';
 /** 兼容 IE */
 import 'es5-shim/es5-shim';
