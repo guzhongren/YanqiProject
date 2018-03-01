@@ -5,6 +5,6 @@ before_install:
   - npm install
 script:
   #- npm run test
-  - npm run vendor
+  - npm run dev
 after_script:
   #- npm run coverage
