@@ -4,7 +4,7 @@ const port = process.env.PORT || 3000;
 module.exports = {
   mode: 'development',
   entry: {
-    // vendor: ['bootstrap', 'reactstrap'],
+    vendor: ['bootstrap', 'reactstrap'],
     app: ['react-hot-loader/patch', './src/index.js']
   },
   output: {
