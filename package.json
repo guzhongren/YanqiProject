@@ -4,9 +4,9 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "dev": "standard --fix && webpack-dev-server --config webpack.config.development.js",
+    "dev": "webpack-dev-server --config webpack.config.development.js",
     "preBuild": "rimraf dist",
-    "build": "standard --fix && cross-env NODE_ENV=production webpack -p --config webpack.config.production.js"
+    "build": "cross-env NODE_ENV=production webpack -p --config webpack.config.production.js"
   },
   "keywords": [],
   "author": "",
