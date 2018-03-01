@@ -2,7 +2,7 @@ import { AppContainer } from 'react-hot-loader';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import AppRouter from './route/index';
-
+import 'bootstrap/dist/css/bootstrap.css';
 const render = Component =>
   ReactDOM.render(
     <AppContainer>

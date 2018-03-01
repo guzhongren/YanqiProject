@@ -1,10 +1,17 @@
 import React from 'react';
-
-export default class Index22 extends React.Component{
-
-    render(){
-        return (
-            <h1>Index22</h1>
-        )
-    }
+import { Button } from 'reactstrap';
+export default class Index22 extends React.Component {
+  render () {
+    return (
+      <p>
+        <Button color="primary">Primary</Button>
+        <Button color="secondary">secondary</Button>
+        <Button color="success">success</Button>
+        <Button color="info">info</Button>
+        <Button color="warning">warning</Button>
+        <Button color="danger">danger</Button>
+        <Button color="link">link</Button>
+      </p>
+    )
+  }
 }
