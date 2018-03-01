@@ -4,9 +4,9 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "dev": "webpack-dev-server --config webpack.config.development.js",
-    "prebuild": "rimraf dist",
-    "build": "cross-env NODE_ENV=production webpack -p --config webpack.config.production.js"
+    "dev": "standard --fix && webpack-dev-server --config webpack.config.development.js",
+    "preBuild": "rimraf dist",
+    "build": "standard --fix && cross-env NODE_ENV=production webpack -p --config webpack.config.production.js"
   },
   "keywords": [],
   "author": "",
@@ -32,9 +32,17 @@
     "html-webpack-plugin": "webpack-contrib/html-webpack-plugin",
     "react-hot-loader": "^4.0.0",
     "rimraf": "^2.6.2",
+    "standard": "^11.0.0",
     "style-loader": "^0.20.2",
     "webpack": "^4.0.1",
     "webpack-cli": "^2.0.9",
     "webpack-dev-server": "^3.1.0"
+  },
+  "standard": {
+    "ignore": [
+      "dist/",
+      "webpack.config.development.js",
+      "webpack.config.production.js"
+    ]
   }
 }
