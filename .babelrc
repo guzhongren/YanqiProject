@@ -1,34 +1,4 @@
 {
-    "presets": [
-      [
-        "es6",
-        {
-          "modules": false,
-          "targets": {
-            "browsers": [ 
-                "> 1%",
-                "last 3 versions",
-                "ios 8",
-                "android 4.2",
-                "ie 9"
-            ]
-        },
-        "useBuiltIns": "usage" 
-        }
-      ],
-      // webpack 现在已经支持原生的 import 语句了, 并且将其运用在 tree-shaking 特性上
-      "react"
-      // 转译 React 组件为 JavaScript 代码
-    ],
-    "plugins": [
-      [
-        "transform-object-assign",
-        "import",
-        {
-          // "libraryName": "antd",
-          // "libraryDirectory": "lib", // default: lib 
-          "style": "css"
-        }
-      ]
-    ]
-  }
+    "presets": ["env", "react", "stage-1"],
+    "plugins": ["react-hot-loader/babel"]
+}
