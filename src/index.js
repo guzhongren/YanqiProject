@@ -1,7 +1,7 @@
 import { AppContainer } from 'react-hot-loader';
 import React from 'react';
 import ReactDOM from 'react-dom';
-import AppRouter from './AppRouter';
+import AppRouter from './route/index';
 
 const render = Component =>
   ReactDOM.render(
@@ -14,4 +14,4 @@ const render = Component =>
 render(AppRouter);
 
 // Webpack Hot Module Replacement API
-if (module.hot) module.hot.accept('./AppRouter', () => render(require('./AppRouter').default));
+if (module.hot) module.hot.accept('./route/index', () => render(require('./route/index').default));
