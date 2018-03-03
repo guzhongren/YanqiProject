@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "main": "index.js",
   "license": "MIT",
-  "homepage":"https://guzhongren.github.io/project-boilerplate",
+  "homepage": "https://guzhongren.github.io/project-boilerplate",
   "scripts": {
     "dev": "webpack-dev-server --config webpack.config.development.js",
     "preBuild": "rimraf dist",
@@ -14,6 +14,7 @@
   "author": "",
   "description": "",
   "dependencies": {
+    "gh-pages": "^1.1.0",
     "jquery": "^3.3.1",
     "popper.js": "^1.12.9",
     "react": "^16.2.0",
@@ -36,7 +37,6 @@
     "css-loader": "^0.28.10",
     "extract-text-webpack-plugin": "^4.0.0-beta.0",
     "file-loader": "^1.1.10",
-    "gh-pages": "^1.1.0",
     "html-webpack-plugin": "webpack-contrib/html-webpack-plugin",
     "react-hot-loader": "^4.0.0",
     "reactstrap": "^5.0.0-beta.2",
