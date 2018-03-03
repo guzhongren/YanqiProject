@@ -28,7 +28,7 @@ module.exports = {
         ]
       },
       {
-        test: /\.(png|jpg|jpeg|gif|svg|eot|ttf|gif|woff|ico|cur)$/,
+        test: /\.(png|jpg|jpeg|gif|gif|ico|cur)$/,
         use: [{
           loader: 'url-loader',
           options: {
@@ -39,13 +39,12 @@ module.exports = {
       {
         test: /\.(ttf|eot|svg)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
         use: [{
-          loader: 'file-loader',
-          options: {
-            name: '[path][name].[ext]',
-            outputPath: 'fonts/',
-            useRelativePath: true
+            loader: 'url-loader',
+            options: {
+              limit: 2048
+            }
           }
-        }]
+        ]
       },
       {
         test: /\.woff(2)?(\?v=[0-9]\.[0-9]\.[0-9])?$/,

@@ -5,7 +5,7 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin');
 module.exports = {
   mode: 'production',
   entry: {
-    endor: ['bootstrap/dist/css/bootstrap.min.css', 'reactstrap','semantic-ui-react','semantic-ui-css/semantic.min.css'],
+    endor: ['bootstrap/dist/css/bootstrap.min.css', 'reactstrap', 'semantic-ui-react', 'semantic-ui-css/semantic.min.css'],
     app: './src/index.js'
   },
   output: {
@@ -27,50 +27,49 @@ module.exports = {
   devtool: 'source-map',
   module: {
     rules: [{
-      test: /\.(js)$/,
-      exclude: /node_modules/,
-      use: ['babel-loader']
-    },
-    {
-      test: /\.css$/,
-      use: [{
-          loader: 'style-loader'
-        },
-        {
-          loader: 'css-loader'
-        }
-      ]
-    },
-    {
-      test: /\.(png|jpg|jpeg|gif|svg|eot|ttf|gif|woff|ico|cur)$/,
-      use: [{
-        loader: 'url-loader',
-        options: {
-          fallback: 'file-loader'
-        }
-      }]
-    },
-    {
-      test: /\.(ttf|eot|svg)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
-      use: [{
-        loader: 'file-loader',
-        options: {
-          name: '[path][name].[ext]',
-          outputPath: 'fonts/',
-          useRelativePath: true
-        }
-      }]
-    },
-    {
-      test: /\.woff(2)?(\?v=[0-9]\.[0-9]\.[0-9])?$/,
-      use: [{
-        loader: 'url-loader',
-        options: {
-          limit: 2048
-        }
-      }]
-    }
-  ]
+        test: /\.(js)$/,
+        exclude: /node_modules/,
+        use: ['babel-loader']
+      },
+      {
+        test: /\.css$/,
+        use: [{
+            loader: 'style-loader'
+          },
+          {
+            loader: 'css-loader'
+          }
+        ]
+      },
+      {
+        test: /\.(png|jpg|jpeg|gif|gif|ico|cur)$/,
+        use: [{
+          loader: 'url-loader',
+          options: {
+            fallback: 'file-loader'
+          }
+        }]
+      },
+      {
+        test: /\.(ttf|eot|svg)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
+        use: [{
+            loader: 'url-loader',
+            options: {
+              limit: 2048
+            }
+          }
+        ]
+      },
+      {
+        test: /\.woff(2)?(\?v=[0-9]\.[0-9]\.[0-9])?$/,
+        use: [{
+          loader: 'url-loader',
+          options: {
+            limit: 2048
+          }
+        }]
+      }
+    ]
   },
   optimization: {
     splitChunks: {
@@ -95,7 +94,7 @@ module.exports = {
       'window.jQuery': 'jquery',
       'window.$': 'jquery'
     }),
-    
+
     // Create the stylesheet under 'styles' directory
     new ExtractTextPlugin({
       filename: 'styles/styles.[contenthash].css',
