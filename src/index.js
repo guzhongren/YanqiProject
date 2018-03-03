@@ -3,6 +3,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import AppRouter from './route/index';
 import 'bootstrap/dist/css/bootstrap.css';
+import 'semantic-ui-css/semantic.min.css'
 const render = Component =>
   ReactDOM.render(
     <AppContainer>

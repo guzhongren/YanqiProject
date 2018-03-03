@@ -1,12 +1,14 @@
 {
-  "name": "webpack-for-react",
+  "name": "project-boilerplate",
   "version": "1.0.0",
   "main": "index.js",
   "license": "MIT",
+  "homepage":"https://guzhongren.github.io/project-boilerplate",
   "scripts": {
     "dev": "webpack-dev-server --config webpack.config.development.js",
     "preBuild": "rimraf dist",
-    "build": "cross-env NODE_ENV=production webpack -p --config webpack.config.production.js"
+    "build": "cross-env NODE_ENV=production webpack -p --config webpack.config.production.js",
+    "depoly": "./node_modules/.bin/gh-pages -d dist"
   },
   "keywords": [],
   "author": "",
@@ -20,6 +22,7 @@
     "react-imported-component": "^2.0.1",
     "react-prop-types": "^0.4.0",
     "react-router-dom": "^4.2.2",
+    "semantic-ui-css": "^2.3.0",
     "semantic-ui-react": "^0.78.3"
   },
   "devDependencies": {
@@ -33,6 +36,7 @@
     "css-loader": "^0.28.10",
     "extract-text-webpack-plugin": "^4.0.0-beta.0",
     "file-loader": "^1.1.10",
+    "gh-pages": "^1.1.0",
     "html-webpack-plugin": "webpack-contrib/html-webpack-plugin",
     "react-hot-loader": "^4.0.0",
     "reactstrap": "^5.0.0-beta.2",

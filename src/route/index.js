@@ -2,7 +2,7 @@ import React from 'react';
 import { Switch, HashRouter  as Router, Route } from 'react-router-dom';
 import importedComponent from 'react-imported-component';
 
-import Home from '../components/Home';
+import Home from '../components/home/index';
 import Loading from '../components/Loading';
 // import Index2 from './index2';
 
@@ -25,7 +25,7 @@ const AppRouter = () => {
       <div>
         <Switch>
           <Route exact path="/" component={Home} />
-          <Route path="/dynamic" component={AsyncIndex2} />
+          <Route path="/map" component={AsyncIndex2} />
           <Route component={AsyncNoMatch} />
         </Switch>
       </div>

@@ -5,7 +5,7 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin');
 module.exports = {
   mode: 'production',
   entry: {
-    vendor: ['semantic-ui-react'],
+    endor: ['bootstrap/dist/css/bootstrap.min.css', 'reactstrap','semantic-ui-react','semantic-ui-css/semantic.min.css'],
     app: './src/index.js'
   },
   output: {
@@ -26,53 +26,51 @@ module.exports = {
   // Change to production source maps
   devtool: 'source-map',
   module: {
-    rules: [
-      {
-        test: /\.(js)$/,
-        exclude: /node_modules/,
-        use: ['babel-loader']
-      },
-      {
-        test: /\.css$/,
-        // We configure 'Extract Text Plugin'
-        use: ExtractTextPlugin.extract({
-          // loader that should be used when the
-          // CSS is not extracted
-          fallback: 'style-loader',
-          use: [
-            {
-              loader: 'css-loader',
-              options: {
-                modules: true,
-                // Allows to configure how many loaders 
-                // before css-loader should be applied
-                // to @import(ed) resources
-                importLoaders: 1,
-                camelCase: true,
-                // Create source maps for CSS files
-                sourceMap: true
-              }
-            },
-            {
-              // PostCSS will run before css-loader and will 
-              // minify and autoprefix our CSS rules. We are also
-              // telling it to only use the last 2 
-              // versions of the browsers when autoprefixing
-              loader: 'postcss-loader',
-              options: {
-                config: {
-                  ctx: {
-                    autoprefixer: {
-                      browsers: 'last 2 versions'
-                    }
-                  }
-                }
-              }
-            }
-          ]
-        })
-      }
-    ]
+    rules: [{
+      test: /\.(js)$/,
+      exclude: /node_modules/,
+      use: ['babel-loader']
+    },
+    {
+      test: /\.css$/,
+      use: [{
+          loader: 'style-loader'
+        },
+        {
+          loader: 'css-loader'
+        }
+      ]
+    },
+    {
+      test: /\.(png|jpg|jpeg|gif|svg|eot|ttf|gif|woff|ico|cur)$/,
+      use: [{
+        loader: 'url-loader',
+        options: {
+          fallback: 'file-loader'
+        }
+      }]
+    },
+    {
+      test: /\.(ttf|eot|svg)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
+      use: [{
+        loader: 'file-loader',
+        options: {
+          name: '[path][name].[ext]',
+          outputPath: 'fonts/',
+          useRelativePath: true
+        }
+      }]
+    },
+    {
+      test: /\.woff(2)?(\?v=[0-9]\.[0-9]\.[0-9])?$/,
+      use: [{
+        loader: 'url-loader',
+        options: {
+          limit: 2048
+        }
+      }]
+    }
+  ]
   },
   optimization: {
     splitChunks: {
@@ -90,6 +88,12 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: 'public/index.html',
       favicon: 'public/favicon.ico'
+    }),
+    new webpack.ProvidePlugin({
+      $: 'jquery',
+      jQuery: 'jquery',
+      'window.jQuery': 'jquery',
+      'window.$': 'jquery'
     }),
     
     // Create the stylesheet under 'styles' directory

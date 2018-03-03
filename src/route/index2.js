@@ -1,8 +1,8 @@
 import React from 'react';
 import { Route,Switch, NavLink, Redirect } from 'react-router-dom';
 
-import Index21 from '../components/index21';
-import Index22 from '../components/index22';
+import Index21 from '../components/index2/index21';
+import Index22 from '../components/index2/index22';
 const Index2 = ({match})=> (
   <div>
     <div>

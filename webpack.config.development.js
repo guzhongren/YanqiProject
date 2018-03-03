@@ -4,7 +4,7 @@ const port = process.env.PORT || 3000;
 module.exports = {
   mode: 'development',
   entry: {
-    vendor: ['bootstrap', 'reactstrap'],
+    vendor: ['bootstrap/dist/css/bootstrap.min.css', 'reactstrap','semantic-ui-react','semantic-ui-css/semantic.min.css'],
     app: ['react-hot-loader/patch', './src/index.js']
   },
   output: {
@@ -52,7 +52,7 @@ module.exports = {
         use: [{
           loader: 'url-loader',
           options: {
-            limit: 8192
+            limit: 2048
           }
         }]
       }

@@ -1,9 +1,5 @@
 # dist
-public/dist/
-# arcgis_js_api
-public/arcgis_js_api/*
-#cesium
-/public/cesium/
+dist/
 # Logs
 logs
 *.log
